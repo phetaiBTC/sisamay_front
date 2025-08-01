@@ -1,0 +1,22 @@
+{
+    "hello": "Hello",
+    "world": "World",
+    "no": "ລຳດັບ",
+    "name": "ຊື່",
+    "email": "ອີເມວ",
+    "password": "ລະຫັດຜ່ານ",
+    "confirmPassword": "ຢືນຢັນລະຫັດຜ່ານ",
+    "login": "ລາຍການ",
+    "register": "ລົງທະບຽນ",
+    "address": "ທີ່ຢູ່",
+    "createdAt": "ວັນທີ່ສ້າງ",
+    "updatedAt": "ວັນທີ່ແກ້ໄຂ",
+    "edit": "ແກ້ໄຂ",
+    "delete": "ລຶບ",
+    "save": "ບັນທຶກ",
+    "cancel": "ຍົກເລີກ",
+    "create": "ສ້າງ",
+    "employee": "ພະນັກງານ",
+    "clinic": "ຄລີນິກ",
+    "search": "ຄົ້ນຫາ"
+}

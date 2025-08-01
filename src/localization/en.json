@@ -1,0 +1,22 @@
+{
+    "hello": "Hello",
+    "world": "World",
+    "no":"No",
+    "name":"Name",
+    "email":"Email",
+    "password":"Password",
+    "confirmPassword":"Confirm Password",
+    "login":"Login",
+    "register":"Register",
+    "address":"Address",
+    "createdAt":"Created At",
+    "updatedAt":"Updated At",
+    "edit":"Edit",
+    "delete":"Delete",
+    "save":"Save",
+    "cancel":"Cancel",
+    "create":"Create",
+    "employee":"Employee",
+    "clinic":"Clinic",
+    "search":"Search"
+}

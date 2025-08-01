@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'Flao';
+    src: url('/src/assets/fonts/NotoSansLao-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FEn';
+    src: url('/src/assets/fonts/MadimiOne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'FEn', 'Flao', sans-serif !important;
+}
+
+.hide-scrollbar {
+    overflow: auto;
+    /* ยังสามารถ scroll ได้ */
+    scrollbar-width: none;
+    /* สำหรับ Firefox */
+    -ms-overflow-style: none;
+    /* สำหรับ IE และ Edge */
+
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* สำหรับ Chrome, Safari และ Opera */
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+้้h2 {
+    font-size: 1rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.table_a {
+    overflow: hidden;
+    box-shadow: 0 0 5px rgb(185, 185, 185);
+    border-radius: 10px;
+}
+
+.shadow {
+    box-shadow: 0 0 5px rgb(185, 185, 185);
+    border-radius: 10px;
+}
