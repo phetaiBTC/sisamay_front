@@ -11,6 +11,9 @@ importers:
       '@ant-design/icons-vue':
         specifier: ^7.0.1
         version: 7.0.1(vue@3.5.18(typescript@5.8.3))
+      '@lottiefiles/dotlottie-vue':
+        specifier: ^0.8.1
+        version: 0.8.1(vue@3.5.18(typescript@5.8.3))
       '@types/node':
         specifier: ^24.1.0
         version: 24.1.0
@@ -29,6 +32,9 @@ importers:
       dotenv:
         specifier: ^17.2.1
         version: 17.2.1
+      install:
+        specifier: ^0.13.0
+        version: 0.13.0
       leaflet:
         specifier: ^1.9.4
         version: 1.9.4
@@ -281,6 +287,14 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.5.4':
     resolution: {integrity: sha512-VT2+G1VQs/9oz078bLrYbecdZKs912zQlkelYpuf+SXF+QvZDYJlbx/LSx+meSAwdDFnF8FVXW92AVjjkVmgFw==}
+
+  '@lottiefiles/dotlottie-vue@0.8.1':
+    resolution: {integrity: sha512-FUsWzEaej6sRg49A823TXMGYSvYlf/Tl66blJ6hNWbQNC8+qNQTCeSQkiTgsUYxtYuihp/LUGWvn4br07rWgmg==}
+    peerDependencies:
+      vue: ^3.3.4
+
+  '@lottiefiles/dotlottie-web@0.49.0':
+    resolution: {integrity: sha512-SQ8sDrUrGMM24QWjs0n863SKobMSB9Plz8gbte9RYnLc4TfmQoWxjFgGBTlbGnh/aTQvtpxOxX2ueBohCsCaRQ==}
 
   '@rolldown/pluginutils@1.0.0-beta.29':
     resolution: {integrity: sha512-NIJgOsMjbxAXvoGq/X0gD7VPMQ8j9g0BiDaNjVNVjvl+iKXxL3Jre0v31RmBYeLEmkbj2s02v8vFTbUXi5XS2Q==}
@@ -657,6 +671,10 @@ packages:
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
+
+  install@0.13.0:
+    resolution: {integrity: sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==}
+    engines: {node: '>= 0.10'}
 
   is-plain-object@3.0.1:
     resolution: {integrity: sha512-Xnpx182SBMrr/aBik8y+GuR4U1L9FqMSojwDQwPMmxyC6bvEqly9UBCxhauBF5vNh2gwWJNX6oDV7O+OM4z34g==}
@@ -1069,6 +1087,13 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.4': {}
 
+  '@lottiefiles/dotlottie-vue@0.8.1(vue@3.5.18(typescript@5.8.3))':
+    dependencies:
+      '@lottiefiles/dotlottie-web': 0.49.0
+      vue: 3.5.18(typescript@5.8.3)
+
+  '@lottiefiles/dotlottie-web@0.49.0': {}
+
   '@rolldown/pluginutils@1.0.0-beta.29': {}
 
   '@rollup/rollup-android-arm-eabi@4.46.2':
@@ -1464,6 +1489,8 @@ snapshots:
   he@1.2.0: {}
 
   hookable@5.5.3: {}
+
+  install@0.13.0: {}
 
   is-plain-object@3.0.1: {}
 

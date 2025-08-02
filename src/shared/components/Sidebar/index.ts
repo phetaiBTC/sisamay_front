@@ -21,6 +21,7 @@ interface MenuItem {
 }
 export const menuSidebar: MenuItem[] = [
     { label: 'clinic', icon: ShopOutlined, route: 'clinic' },
+    { label: 'user', icon: UserAddOutlined, route: 'user' },
     // { label: 'manage_users', icon: UserAddOutlined, route: 'user.index' },
     // {
     //     label: 'manage_products',

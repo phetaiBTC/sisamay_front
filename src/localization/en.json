@@ -18,5 +18,15 @@
     "create":"Create",
     "employee":"Employee",
     "clinic":"Clinic",
-    "search":"Search"
+    "search":"Search",
+    "user":"User",
+    "add":"Add",
+    "restore":"Restore",
+    "can_recover":"Can recover",
+    "data_preserve":"Data preserve",
+    "soft_delete":"Soft Delete",
+    "hard_delete":"Hard Delete",
+    "can_not_recover":"Can't recover",
+    "data_lost_preserve":"Data Lost preserve",
+    "warning":"Warning"
 }

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <base-crud :title="tI18n('clinic')" :columns="columnsClinic" :data="data" :scroll="{ x: 1500, y: 275 }"
-            @on-delete="hardDelete($event)" @on-add="open = $event">
+        <base-crud title="clinic" :columns="columnsClinic" :data="data" :scroll="{ x: 1500, y: 240 }"
+            @on-hard-delete="hardDelete($event)" @on-soft-delete="softDelete($event)" @on-add="open = $event" @on-change="console.log($event)">
             <template #default="{ column, record }">
                 <template v-if="column.key === 'employee'">
                     <UsergroupAddOutlined style="font-size: 1.2rem;margin-right: 5px;" />
@@ -16,13 +16,12 @@
 <script setup lang="ts">
 import BaseCrud from '@/shared/components/BaseCrud/index.vue';
 import PickerMap from '../components/PickerMap.vue';
-import { tI18n } from '@/shared/utils/i18n';
 import { UsergroupAddOutlined } from '@ant-design/icons-vue';
 import { columnsClinic } from '../interface';
 import { useClinic } from '../composables/useClinic';
 import { ref } from 'vue';
-const { hardDelete } = useClinic()
-const open = ref(true)
+const { hardDelete,softDelete } = useClinic()
+const open = ref(false)
 
 
 interface DataItem {

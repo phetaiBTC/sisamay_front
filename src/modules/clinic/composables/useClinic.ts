@@ -34,11 +34,20 @@ export const useClinic = () => {
             message.error(error)
         }
     }
+    const softDelete = async (id: number) => {
+        try {
+            // const res = await Api.delete(`/clinic/${id}`)
+            message.success('delete success ' + id)
+        } catch (error: any) {
+            message.error(error)
+        }
+    }
     return {
         clinics: clinicStore.data,
         loading: clinicStore.loading,
         addClinic,
         getAllClinic,
-        hardDelete
+        hardDelete,
+        softDelete
     }
 }   

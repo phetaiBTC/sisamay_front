@@ -18,5 +18,15 @@
     "create": "ສ້າງ",
     "employee": "ພະນັກງານ",
     "clinic": "ຄລີນິກ",
-    "search": "ຄົ້ນຫາ"
+    "search": "ຄົ້ນຫາ",
+    "user": "ຜູ້ໃຊ້",
+    "add": "ເພີ່ມ",
+    "restore": "ກູ້ຄືນ",
+    "can_recover": "ສາມາດກູ້ຄືນ",
+    "data_preserve": "ຮັກສາຂໍ້ມູນ",
+    "soft_delete": "ລຶບສາມາດກູ້ຄືນ",
+    "hard_delete": "ລຶບຖາວອນ",
+    "can_not_recover": "ບໍ່ສາມາດກູ້ຄືນ",
+    "data_lost_preserve": "ຂໍ້ມູນສູນເສຍຂໍ້ມູນຖາວອນ",
+    "warning":"ຄໍາເຕືອນ"
 }
