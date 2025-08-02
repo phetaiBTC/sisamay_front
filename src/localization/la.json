@@ -26,9 +26,10 @@
     "data_preserve": "ຮັກສາຂໍ້ມູນ",
     "soft_delete": "ລຶບສາມາດກູ້ຄືນ",
     "hard_delete": "ລຶບຖາວອນ",
-    "can_not_recover": "ບໍ່ສາມາດກູ້ຄືນ",
+    "can_not_recover": "ບໍ່ສາມາດກູ້ຄືນຂໍ້ມູນໄດ້",
     "data_lost_preserve": "ຂໍ້ມູນສູນເສຍຂໍ້ມູນຖາວອນ",
     "warning":"ຄໍາເຕືອນ",
     "confirm":"ຢືນຢັນ",
-    "Are_you_sure_restore_this_task":"ທ່ານແນ່ໃຈທິ່ຈະກູ້ລາຍການນີ້ຄືນບໍ່?"
+    "Are_you_sure_restore_this_task":"ທ່ານແນ່ໃຈທິ່ຈະກູ້ລາຍການນີ້ຄືນບໍ່?",
+    "Are_you_sure_delete_this_task":"ທ່ານແນ່ໃຈທິ່ຈະລຶບລາຍການນີ້ຄືນບໍ່?"
 }

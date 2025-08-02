@@ -30,5 +30,7 @@
     "data_lost_preserve":"Data Lost preserve",
     "warning":"Warning",
     "confirm":"Confirm",
-    "Are_you_sure_restore_this_task":"Are you sure restore this task?"
+    "Are_you_sure_restore_this_task":"Are you sure restore this task?",
+    "Are_you_sure_delete_this_task":"Are you sure delete this task?"
+
 }

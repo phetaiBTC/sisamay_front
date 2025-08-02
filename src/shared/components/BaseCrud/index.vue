@@ -107,6 +107,7 @@ const sort = ref<boolean>(true);
 const deleteId = ref<number>(0);
 const visibleModalDelete = ref<boolean>(false);
 import { Modal, type TableColumnsType } from 'ant-design-vue';
+import { tI18n } from '@/shared/utils/i18n';
 const pageSizeOptions = ref<string[]>(['10', '20', '30', '40', '50']);
 const current = ref(1);
 const pageSizeRef = ref(10);
@@ -143,12 +144,12 @@ const restore = (id: number) => {
 }
 const showDeleteConfirm = (id: number) => {
     Modal.confirm({
-        title: 'Are you sure delete this task?',
+        title: tI18n('Are_you_sure_delete_this_task'),
         icon: createVNode(ExclamationCircleOutlined),
-        content: 'Some descriptions',
-        okText: 'Yes',
+        content: '- '+tI18n('can_not_recover'),
+        okText: tI18n('confirm'),
         okType: 'danger',
-        cancelText: 'No',
+        cancelText: tI18n('cancel'),
         onOk() {
             onHardDelete(id)
         },
