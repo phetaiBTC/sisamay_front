@@ -1,6 +1,7 @@
 <template>
     <div>
         <base-crud 
+        :loading="loading"
         title="clinic" 
         :columns="columnsClinic" 
         :data="data" 
@@ -29,7 +30,7 @@ import { UsergroupAddOutlined } from '@ant-design/icons-vue';
 import { columnsClinic } from '../interface';
 import { useClinic } from '../composables/useClinic';
 import { ref } from 'vue';
-const { hardDelete,softDelete } = useClinic()
+const { hardDelete,softDelete,loading } = useClinic()
 const open = ref(false)
 
 

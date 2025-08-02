@@ -32,7 +32,7 @@
         </a-col>
         <a-col :span="24">
             <a-table :columns="props.columns" :data-source="props.data" :scroll="props.scroll" :pagination="false"
-                bordered class="table_a">
+                bordered class="table_a" :loading="props.loading">
                 <template #bodyCell="{ column, record, index }">
                     <template v-if="column.key === 'index'">
                         {{ index + 1 }}
@@ -124,6 +124,7 @@ const onChange = () => {
 const props = withDefaults(defineProps<{
     title: string
     columns: TableColumnsType
+    loading: boolean
     data: any[]
     scroll?: {
         x: number
