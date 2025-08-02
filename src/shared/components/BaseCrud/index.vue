@@ -55,12 +55,15 @@
                         </div>
                         <div style="width: 100%;display: flex;justify-content: space-between;"
                             v-if="is_active === 'inactive'">
-                            <a-button type="primary">
-                                <template #icon>
-                                    <ReloadOutlined />
-                                </template>
-                                {{ $t('restore') }}
-                            </a-button>
+                            <a-popconfirm :title="$t('Are_you_sure_restore_this_task')" :ok-text="$t('confirm')" :cancel-text="$t('cancel')"
+                                @confirm="restore(record.id)">
+                                <a-button type="primary">
+                                    <template #icon>
+                                        <ReloadOutlined />
+                                    </template>
+                                    {{ $t('restore') }}
+                                </a-button>
+                            </a-popconfirm>
                             <a-button type="primary" danger ghost @click="showDeleteConfirm(record.id)">
                                 <template #icon>
                                     <delete-filled style="color: red;" />
@@ -128,12 +131,15 @@ const props = withDefaults(defineProps<{
 }>(), {
     scroll: () => (false)
 })
-const emit = defineEmits(['onAdd', 'onChange', 'onHardDelete', 'onSoftDelete'])
+const emit = defineEmits(['onAdd', 'onChange', 'onHardDelete', 'onSoftDelete','onRestore'])
 const onHardDelete = (id: number) => {
     emit('onHardDelete', id)
 }
 const onSoftDelete = (id: number) => {
     emit('onSoftDelete', id)
+}
+const restore = (id: number) => {
+    emit('onRestore', id)
 }
 const showDeleteConfirm = (id: number) => {
     Modal.confirm({

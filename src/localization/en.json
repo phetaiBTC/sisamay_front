@@ -28,5 +28,7 @@
     "hard_delete":"Hard Delete",
     "can_not_recover":"Can't recover",
     "data_lost_preserve":"Data Lost preserve",
-    "warning":"Warning"
+    "warning":"Warning",
+    "confirm":"Confirm",
+    "Are_you_sure_restore_this_task":"Are you sure restore this task?"
 }

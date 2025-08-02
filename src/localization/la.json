@@ -28,5 +28,7 @@
     "hard_delete": "ລຶບຖາວອນ",
     "can_not_recover": "ບໍ່ສາມາດກູ້ຄືນ",
     "data_lost_preserve": "ຂໍ້ມູນສູນເສຍຂໍ້ມູນຖາວອນ",
-    "warning":"ຄໍາເຕືອນ"
+    "warning":"ຄໍາເຕືອນ",
+    "confirm":"ຢືນຢັນ",
+    "Are_you_sure_restore_this_task":"ທ່ານແນ່ໃຈທິ່ຈະກູ້ລາຍການນີ້ຄືນບໍ່?"
 }

@@ -1,7 +1,16 @@
 <template>
     <div>
-        <base-crud title="clinic" :columns="columnsClinic" :data="data" :scroll="{ x: 1500, y: 240 }"
-            @on-hard-delete="hardDelete($event)" @on-soft-delete="softDelete($event)" @on-add="open = $event" @on-change="console.log($event)">
+        <base-crud 
+        title="clinic" 
+        :columns="columnsClinic" 
+        :data="data" 
+        :scroll="{ x: 1500, y: 240 }"
+        @on-hard-delete="hardDelete($event)" 
+        @on-soft-delete="softDelete($event)" 
+        @on-add="open = $event" 
+        @on-change="console.log($event)"
+        @on-restore="console.log($event)"
+        >
             <template #default="{ column, record }">
                 <template v-if="column.key === 'employee'">
                     <UsergroupAddOutlined style="font-size: 1.2rem;margin-right: 5px;" />
