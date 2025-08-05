@@ -4,10 +4,9 @@
 // { key: 'sub2', label: 'Team', icon: TeamOutlined, children: [{ key: '6', label: 'Team 1', route: 'home' }, { key: '8', label: 'Team 2', route: 'home' }] },
 // { key: '9', label: 'File', icon: FileOutlined, route: 'home' },
 import {
-    DesktopOutlined,
     UserAddOutlined,
     ShopOutlined,
-    ShoppingOutlined
+    TeamOutlined
 } from '@ant-design/icons-vue';
 interface childrenItem {
     label: string,
@@ -22,6 +21,7 @@ interface MenuItem {
 export const menuSidebar: MenuItem[] = [
     { label: 'clinic', icon: ShopOutlined, route: 'clinic' },
     { label: 'user', icon: UserAddOutlined, route: 'user' },
+    { label: 'employee', icon: TeamOutlined, route: 'employee' },
     // { label: 'manage_users', icon: UserAddOutlined, route: 'user.index' },
     // {
     //     label: 'manage_products',

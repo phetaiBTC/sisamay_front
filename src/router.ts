@@ -4,7 +4,8 @@ import { authRouter } from "./modules/auth/router";
 import { userRouter } from "./modules/user/router";
 import { authGuard } from "./guards/auth.guard";
 import Forbidden from "./views/Forbidden.vue";
-import Unauthorized from "./views/unauthorized.vue";
+import unauthorized from "./views/Unauthorized.vue";
+import { employeeRouter } from "./modules/employee/router";
 const routes: RouteRecordRaw[] = [
     {
         path: '/forbidden',
@@ -17,7 +18,7 @@ const routes: RouteRecordRaw[] = [
     {
         path: '/unauthorized',
         name: 'unauthorized',
-        component: Unauthorized,
+        component: unauthorized,
         meta: {
             skipAuthCheck: true
         }
@@ -27,7 +28,8 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/layouts/default.vue'),
         children: [
             ...clinicRouter,
-            ...userRouter
+            ...userRouter,
+            ...employeeRouter
         ]
     },
     ...authRouter

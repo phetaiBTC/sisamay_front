@@ -14,7 +14,7 @@ export const useClinic = () => {
         try {
             loading.value = true
             await Api.post('/clinic', item)
-            getAllClinic()
+            await getAllClinic()
             message.success('add success')
         } catch (error: any) {
             message.error(error)
@@ -39,7 +39,7 @@ export const useClinic = () => {
         try {
             await Api.delete(`/clinic/hard/${id}`)
             message.success('delete success ' + id)
-            getAllClinic()
+            await getAllClinic()
         } catch (error: any) {
             message.error(error)
         }
@@ -48,7 +48,7 @@ export const useClinic = () => {
         try {
             await Api.delete(`/clinic/soft/${id}`)
             message.success('delete success')
-            getAllClinic()
+            await getAllClinic()
         } catch (error: any) {
             message.error(error)
         }
@@ -57,7 +57,7 @@ export const useClinic = () => {
         try {
             await Api.patch(`/clinic/restore/${id}`)
             message.success('restore success')
-            getAllClinic()
+            await getAllClinic()
         } catch (error: any) {
             message.error(error)
         }
@@ -66,7 +66,7 @@ export const useClinic = () => {
         try {
             await Api.patch(`/clinic/${id}`, item)
             message.success('update success')
-            getAllClinic()
+            await getAllClinic()
         } catch (error: any) {
             message.error(error)
         }

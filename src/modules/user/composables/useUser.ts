@@ -14,7 +14,7 @@ export const useUser = () => {
         try {
             loading.value = true
             await Api.post('/user', item)
-            getAllUser()
+            await getAllUser()
             message.success('add success')
         } catch (error: any) {
             message.error(error.response.data.message)
@@ -27,7 +27,7 @@ export const useUser = () => {
         try {
             await Api.patch(`/user/${id}`, item)
             message.success('update success')
-            getAllUser()
+            await getAllUser()
         } catch (error: any) {
             message.error(error)
         }
@@ -50,7 +50,7 @@ export const useUser = () => {
         try {
             await Api.delete(`/user/hard/${id}`)
             message.success('delete success ' + id)
-            getAllUser()
+            await getAllUser()
         } catch (error: any) {
             message.error(error)
         }
@@ -59,7 +59,7 @@ export const useUser = () => {
         try {
             await Api.delete(`/user/soft/${id}`)
             message.success('delete success')
-            getAllUser()
+            await getAllUser()
         } catch (error: any) {
             message.error(error)
         }
@@ -68,7 +68,7 @@ export const useUser = () => {
         try {
             await Api.patch(`/user/restore/${id}`)
             message.success('restore success')
-            getAllUser()
+            await getAllUser()
         } catch (error: any) {
             message.error(error)
         }
