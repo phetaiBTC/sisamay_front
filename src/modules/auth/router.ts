@@ -4,6 +4,9 @@ export const authRouter: RouteRecordRaw[] = [
     {
         path: '/login',
         name: 'login',
-        component:AuthIndex
+        component:AuthIndex,
+        meta:{
+            skipAuthCheck: true
+        }
     }
 ]

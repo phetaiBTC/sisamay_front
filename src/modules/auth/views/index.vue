@@ -3,17 +3,13 @@
         <div
             style="border-radius: 10px;overflow: hidden; padding: 0 30px;display: flex;flex-direction: column;justify-content: center;align-items: center;box-shadow: 0 0 10px rgba(0, 0, 0,0.5);">
             <DotLottieVue style="height: 200px; width: 200px" autoplay loop src="/src/assets/images/dog.lottie" />
-            <a-form :model="formState" name="normal_login" class="login-form" @finish="login(formState.email, formState.password)"
-                @finishFailed="onFinishFailed">
-                <a-form-item name="email" :rules="[{ required: true, message: 'Please input your email!'}, { type: 'email', message: 'The input is not valid E-mail!' }]">
-                    <a-input v-model:value="formState.email" placeholder="Email">
-                        <template #prefix>
-                            <MailOutlined class="site-form-item-icon" />
-                        </template>
-                    </a-input>
-                </a-form-item>
+            <a-form :model="formState" name="normal_login" class="login-form"
+                @finish="login(formState.email, formState.password)" @finishFailed="onFinishFailed" layout="vertical">
+                <BaseFormInput title="email" :prefix="MailOutlined" v-model:modelValue="formState.email">
+                </BaseFormInput>
 
-                <a-form-item name="password" :rules="[{ required: true, message: 'Please input your password!' }]">
+                <a-form-item name="password" :label="$t('password')"
+                    :rules="[{ required: true, message: 'Please input your password!' }]">
                     <a-input-password v-model:value="formState.password" placeholder="Password">
                         <template #prefix>
                             <LockOutlined class="site-form-item-icon" />
@@ -29,9 +25,9 @@
                 </a-form-item>
 
                 <a-form-item>
-                    <a-button :loading="loading" :disabled="disabled" type="primary" html-type="submit" class="login-form-button"
-                        style="width: 100%;">
-                        Log in
+                    <a-button :loading="loading" :disabled="disabled" type="primary" html-type="submit"
+                        class="login-form-button" style="width: 100%;">
+                        {{ $t('login') }}
                     </a-button>
                 </a-form-item>
             </a-form>
@@ -43,20 +39,22 @@ import { reactive, computed } from 'vue';
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import { MailOutlined, LockOutlined } from '@ant-design/icons-vue';
 import { useAuth } from '../composables/useAuth';
-const { login,loading } = useAuth();
+import BaseFormInput from '@/shared/components/BaseFormInput.vue';
+import { message } from 'ant-design-vue';
+const { login, loading } = useAuth();
 interface FormState {
     email: string;
     password: string;
     remember: boolean;
 }
 const formState = reactive<FormState>({
-    email: 'super_admin@gmail.com',
-    password: 'super@1234',
+    email: 'admin@gmail.com',
+    password: 'admin@1234',
     remember: true,
 });
 
 const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
+    message.error('Failed:', errorInfo);
 };
 const disabled = computed(() => {
     return !(formState.email && formState.password);

@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import type { ClinicEntity } from '../entity/clinicEntity'
 import type { IPagination } from '@/shared/interface/pagination.interface'
 import type { IQuery } from '@/shared/interface/query.interface'
+import type { UserEntity } from '../entity'
 
-export const useClinicStore = defineStore('clinic', () => {
-    const clinics = ref<IPagination<ClinicEntity>>({
+export const useUserStore = defineStore('user', () => {
+    const users = ref<IPagination<UserEntity>>({
         data: [],
         pagination: {
             total: 0,
@@ -23,12 +23,12 @@ export const useClinicStore = defineStore('clinic', () => {
         sort: 'ASC'
     })
     const loading = ref(false)
-    const setData = (item: IPagination<ClinicEntity>) => {
-        clinics.value = item
+    const setData = (item: IPagination<UserEntity>) => {
+        users.value = item
         loading.value = false
     }
     return {
-        clinics,
+        users,
         loading,
         setData,
         query

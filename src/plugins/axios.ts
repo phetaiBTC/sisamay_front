@@ -1,12 +1,9 @@
+import { router } from "@/router";
 import axios from "axios";
-
-// console.log(import.meta.env.VITE_API_BASE_URL)
-
 export const Api = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
     headers: {
         "Content-Type": "application/json",
-        // "Accept": "application/json",
     },
 });
 
@@ -22,3 +19,18 @@ Api.interceptors.request.use(
         return Promise.reject(error);
     }
 );
+
+Api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        console.log("HTTP error:", error.response.status);
+        if (error.response.status === 403) {
+            router.push({ name: "forbidden" });
+        }
+        if (error.response.status === 401) {
+            // localStorage.removeItem('token')
+            router.push({ name: "unauthorized" });
+        }
+        return Promise.reject(error);
+    }
+)

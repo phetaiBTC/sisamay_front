@@ -3,15 +3,19 @@ import { Api } from "@/plugins/axios"
 import type { IClinic } from "../interface"
 import { useClinicStore } from "../store/clinicStore"
 import { message } from "ant-design-vue"
+import { storeToRefs } from 'pinia'
+import type { IQuery } from "@/shared/interface/query.interface"
+
 export const useClinic = () => {
     const clinicStore = useClinicStore()
+    const { loading, clinics, query } = storeToRefs(clinicStore)
 
     const addClinic = async (item: IClinic) => {
         try {
-            clinicStore.loading = true
-            const res = await Api.post('/clinic', item)
-            clinicStore.setData(res.data)
-            message.success(res.data.message)
+            loading.value = true
+            await Api.post('/clinic', item)
+            getAllClinic()
+            message.success('add success')
         } catch (error: any) {
             message.error(error)
         }
@@ -19,35 +23,66 @@ export const useClinic = () => {
 
     const getAllClinic = async () => {
         try {
-            clinicStore.loading = true
-            const res = await Api.get('/clinic')
+            loading.value = true
+            const res = await Api.get('/clinic', {
+                params: query.value
+            })
             clinicStore.setData(res.data)
         } catch (error: any) {
             message.error(error)
         }
+        finally {
+            loading.value = false
+        }
     }
     const hardDelete = async (id: number) => {
         try {
-            // const res = await Api.delete(`/clinic/${id}`)
+            await Api.delete(`/clinic/hard/${id}`)
             message.success('delete success ' + id)
+            getAllClinic()
         } catch (error: any) {
             message.error(error)
         }
     }
     const softDelete = async (id: number) => {
         try {
-            // const res = await Api.delete(`/clinic/${id}`)
-            message.success('delete success ' + id)
+            await Api.delete(`/clinic/soft/${id}`)
+            message.success('delete success')
+            getAllClinic()
         } catch (error: any) {
             message.error(error)
         }
     }
+    const restore = async (id: number) => {
+        try {
+            await Api.patch(`/clinic/restore/${id}`)
+            message.success('restore success')
+            getAllClinic()
+        } catch (error: any) {
+            message.error(error)
+        }
+    }
+    const update = async (id: number, item: IClinic) => {
+        try {
+            await Api.patch(`/clinic/${id}`, item)
+            message.success('update success')
+            getAllClinic()
+        } catch (error: any) {
+            message.error(error)
+        }
+    }
+    const setQuery = (value: IQuery) => {
+        query.value = value
+    }
     return {
-        clinics: clinicStore.data,
-        loading: clinicStore.loading,
+        clinics,
+        loading,
         addClinic,
         getAllClinic,
         hardDelete,
-        softDelete
+        softDelete,
+        restore,
+        setQuery,
+        update
     }
 }   

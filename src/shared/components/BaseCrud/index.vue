@@ -26,7 +26,7 @@
                     <a-input-search v-model:value="search" :placeholder="$t('search')" enter-button
                         @search="onChange" />
                     <a-button type="primary" @click="emit('onAdd', true)">{{ $t('add') + ' ' + $t(props.title)
-                        }}</a-button>
+                    }}</a-button>
                 </div>
             </div>
         </a-col>
@@ -40,7 +40,7 @@
                     <template v-if="column.key === 'operation'">
                         <div style="width: 100%;display: flex;justify-content: space-between;"
                             v-if="is_active === 'active'">
-                            <a-button type="primary">
+                            <a-button type="primary" @click="edit(record)">
                                 <template #icon>
                                     <EditOutlined />
                                 </template>
@@ -55,8 +55,8 @@
                         </div>
                         <div style="width: 100%;display: flex;justify-content: space-between;"
                             v-if="is_active === 'inactive'">
-                            <a-popconfirm :title="$t('Are_you_sure_restore_this_task')" :ok-text="$t('confirm')" :cancel-text="$t('cancel')"
-                                @confirm="restore(record.id)">
+                            <a-popconfirm :title="$t('Are_you_sure_restore_this_task')" :ok-text="$t('confirm')"
+                                :cancel-text="$t('cancel')" @confirm="restore(record.id)">
                                 <a-button type="primary">
                                     <template #icon>
                                         <ReloadOutlined />
@@ -84,12 +84,19 @@
                             {{ record.updatedAt }}
                         </div>
                     </template>
+                    <template v-if="column.key === 'deletedAt'">
+                        <div style="display: flex;align-items: center;" v-if="record.deletedAt">
+                            <ClockCircleTwoTone style="font-size: 1.2rem;margin-right: 5px;" />
+                            {{ record.deletedAt }}
+                        </div>
+                    </template>
                 </template>
             </a-table>
         </a-col>
         <div style="display: flex;justify-content: flex-end; width: 100%;">
-            <a-pagination v-model:current="current" v-model:page-size="pageSizeRef" :page-size-options="pageSizeOptions"
-                :total="total" show-size-changer @showSizeChange="onChange">
+            <a-pagination v-model:current="props.pagination.currentPage" v-model:page-size="props.pagination.limit"
+                :page-size-options="pageSizeOptions" :total="props.pagination.total" show-size-changer
+                @change="onChange">
             </a-pagination>
         </div>
     </a-row>
@@ -108,14 +115,12 @@ const deleteId = ref<number>(0);
 const visibleModalDelete = ref<boolean>(false);
 import { Modal, type TableColumnsType } from 'ant-design-vue';
 import { tI18n } from '@/shared/utils/i18n';
-const pageSizeOptions = ref<string[]>(['10', '20', '30', '40', '50']);
-const current = ref(1);
-const pageSizeRef = ref(10);
-const total = ref(50);
+const pageSizeOptions = ref<string[]>(['5', '10', '20', '30']);
 const onChange = () => {
     emit('onChange', {
-        page: current.value,
-        limit: pageSizeRef.value,
+        // page: props.pagination.currentPage,
+        page: is_active.value === 'active' ? props.pagination.currentPage : 1,
+        limit: props.pagination.limit,
         search: search.value,
         is_active: is_active.value,
         sort: sort.value ? 'ASC' : 'DESC'
@@ -126,6 +131,13 @@ const props = withDefaults(defineProps<{
     columns: TableColumnsType
     loading: boolean
     data: any[]
+    pagination: {
+        total: number
+        count: number
+        limit: number
+        totalPages: number
+        currentPage: number
+    }
     scroll?: {
         x: number
         y: number
@@ -133,21 +145,24 @@ const props = withDefaults(defineProps<{
 }>(), {
     scroll: () => (false)
 })
-const emit = defineEmits(['onAdd', 'onChange', 'onHardDelete', 'onSoftDelete','onRestore'])
+const emit = defineEmits(['onAdd', 'onChange', 'onHardDelete', 'onSoftDelete', 'onRestore', 'onEdit'])
 const onHardDelete = (id: number) => {
     emit('onHardDelete', id)
 }
-const onSoftDelete = (id: number) => {
+const onSoftDelete = async (id: number) => {
     emit('onSoftDelete', id)
 }
 const restore = (id: number) => {
     emit('onRestore', id)
 }
+const edit = (record: {}) => {
+    emit('onEdit', record)
+}
 const showDeleteConfirm = (id: number) => {
     Modal.confirm({
         title: tI18n('Are_you_sure_delete_this_task'),
         icon: createVNode(ExclamationCircleOutlined),
-        content: '- '+tI18n('can_not_recover'),
+        content: '- ' + tI18n('can_not_recover'),
         okText: tI18n('confirm'),
         okType: 'danger',
         cancelText: tI18n('cancel'),

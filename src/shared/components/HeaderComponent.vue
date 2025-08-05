@@ -19,24 +19,34 @@
                         <img src="/src/assets/images/vietnam.png" style="height: 1rem;margin-top: -4px !important;">
                     </a-select-option>
                 </a-select>
-                <a-button type="primary" @click="">Logout</a-button>
+                <a-button type="primary" @click="logout()" :loading="loading">
+                    <LogoutOutlined/>{{ $t('logout') }}
+                </a-button>
             </div>
         </div>
     </a-layout-header>
 </template>
 
 <script setup lang="ts">
-import  { UserOutlined } from '@ant-design/icons-vue';
+import { router } from '@/router';
+import { UserOutlined, LogoutOutlined } from '@ant-design/icons-vue';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n'
-
+const loading = ref(false)
 const language = ref(localStorage.getItem('app-locale') || 'la')
 
 const { locale } = useI18n()
 
 const setLanguage = (lang: string) => {
-  locale.value = lang
-  localStorage.setItem('app-locale', lang)
+    locale.value = lang
+    localStorage.setItem('app-locale', lang)
+}
+
+const logout = async () => {
+    loading.value = true
+    localStorage.removeItem('token')
+    loading.value = false
+    await router.push({ name: 'login' })
 }
 </script>
 
