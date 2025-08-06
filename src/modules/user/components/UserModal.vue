@@ -16,7 +16,7 @@
                         </BaseFormInput>
                     </a-col>
                     <a-col :span="24">
-                        <a-form-item :label="$t('password')" name="clinic" :rules="V('password', { required: true })">
+                        <a-form-item :label="$t('password')" name="password" :rules="V('password', { required: true, password: true })">
                             <a-input-password v-model:value="formState.password" :placeholder="$t('password')">
                                 <template #prefix>
                                     <LockOutlined class="site-form-item-icon" />
@@ -25,7 +25,7 @@
                         </a-form-item>
                     </a-col>
                     <a-col :span="24">
-                        <a-form-item label="Clinic" name="clinic" :rules="V('clinic', { required: true })">
+                        <a-form-item :label="$t('clinic')" name="clinic" :rules="V('clinic', { required: true })">
                             <a-select v-model:value="formState.clinic" :options="options">
                             </a-select>
                         </a-form-item>
@@ -38,8 +38,8 @@
                             }}</a-button>
                     </a-col>
                     <a-col :span="12">
-                        <a-button style="width: 100%;" type="primary" html-type="submit">{{ $t('save')
-                            }}</a-button>
+                        <a-button style="width: 100%;" type="primary" html-type="submit" :loading="loadingUser">{{ $t('save')
+                        }}</a-button>
                     </a-col>
                 </a-row>
             </a-form>
@@ -58,7 +58,7 @@ import { useUser } from '../composables/useUser';
 import { useClinic } from '@/modules/clinic/composables/useClinic';
 import { tI18n } from '@/shared/utils/i18n';
 const { getAllClinic, clinics, setQuery } = useClinic()
-const { addUser, updateUser } = useUser()
+const { addUser, updateUser,loadingUser } = useUser()
 const options = ref<Array<{ value: number; label: string }>>()
 const onFinish = async () => {
     if (props.mode == 'create') {
@@ -120,7 +120,7 @@ watch(
                 username: props.data.username,
                 email: props.data.email,
                 password: '',
-                clinic: 0
+                clinic: props.data.clinic_id ? props.data.clinic_id : 0
             }
         }
         if (open && props.mode === 'create') {

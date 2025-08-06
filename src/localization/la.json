@@ -53,5 +53,11 @@
     "province": "ແຂວງ",
     "please_select": "ກະລຸນາເລືອກ",
     "Password_must_be_at_least":"ລະຫັດຜ່ານຕ້ອງຫລາຍກວ່າ",
-    "characters":"ຕົວອັກສອນ"
+    "characters":"ຕົວອັກສອນ",
+    "surname":"ນາມສະກຸນ",
+    "birth_date":"ວັນເກີດ",
+    "gender":"ເພດ",
+    "male":"ຊາຍ",
+    "female":"ຍິງ",
+    "branch":"ສາຂາ"
 }

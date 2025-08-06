@@ -53,5 +53,11 @@
     "province": "Province",
     "please_select": "Please select",
     "Password_must_be_at_least": "Password must be at least",
-    "characters": "characters"
+    "characters": "characters",
+    "surname":"Surname",
+    "birth_date":"Birth Date",
+    "gender":"Gender",
+    "male":"Male",
+    "female":"Female",
+    "branch":"Branch"
 }

@@ -6,7 +6,7 @@ export interface EmployeeEntity {
     name: string
     surname: string
     email: string
-    birth_date: string
+    birth_date: Dayjs
     gender: 'male' | 'female'
     clinic_id: number
     clinic: string

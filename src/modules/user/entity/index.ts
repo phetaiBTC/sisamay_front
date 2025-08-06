@@ -7,6 +7,7 @@ export interface UserEntity {
     username: string;
     email: string;
     is_verified: boolean;
+    clinic_id: number;
     clinic: string;
     avatar: string;
     roles: RoleEntity[];

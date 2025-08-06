@@ -1,41 +1,40 @@
 import { Api } from "@/plugins/axios"
-// import type { ClinicEntity } from "../entity/clinicEntity"
-// import type { IClinic } from "../interface"
 import { useEmployeeStore } from "../store/employeeStore"
 import { message } from "ant-design-vue"
 import { storeToRefs } from 'pinia'
 import type { IQuery } from "@/shared/interface/query.interface"
+import type { IEmployee } from "../interface"
 
-export const useClinic = () => {
+export const useEmployee = () => {
     const employeeStore = useEmployeeStore()
     const { loading, employees, query } = storeToRefs(employeeStore)
 
-    // const addEmployee = async (item: IUser) => {
-    //     try {
-    //         loading.value = true
-    //         await Api.post('/user', item)
-    //         await getAllEmployee()
-    //         message.success('add success')
-    //     } catch (error: any) {
-    //         message.error(error.response.data.message)
-    //     }
-    //     finally {
-    //         loading.value = false
-    //     }
-    // }
-    // const updateEmployee = async (id: number, item: IUser) => {
-    //     try {
-    //         await Api.patch(`/user/${id}`, item)
-    //         message.success('update success')
-    //         await getAllEmployee()
-    //     } catch (error: any) {
-    //         message.error(error)
-    //     }
-    // }
+    const addEmployee = async (item: IEmployee) => {
+        try {
+            loading.value = true
+            await Api.post('/employees', item)
+            await getAllEmployee()
+            message.success('add success')
+        } catch (error: any) {
+            message.error(error.response.data.message)
+        }
+        finally {
+            loading.value = false
+        }
+    }
+    const updateEmployee = async (id: number, item: IEmployee) => {
+        try {
+            await Api.patch(`/employees/${id}`, item)
+            message.success('update success')
+            await getAllEmployee()
+        } catch (error: any) {
+            message.error(error)
+        }
+    }
     const getAllEmployee = async () => {
         try {
             loading.value = true
-            const res = await Api.get('/employee', {
+            const res = await Api.get('/employees', {
                 params: query.value
             })
             employeeStore.setData(res.data)
@@ -80,8 +79,8 @@ export const useClinic = () => {
     return {
         employees,
         loadingEmployee: loading,
-        // addEmployee,
-        // updateEmployee,
+        addEmployee,
+        updateEmployee,
         getAllEmployee,
         hardDeleteEmployee,
         softDeleteEmployee,

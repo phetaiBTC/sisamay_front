@@ -10,7 +10,7 @@
 
                 <a-form-item name="password" :label="$t('password')"
                     :rules="[{ required: true, message: 'Please input your password!' }]">
-                    <a-input-password v-model:value="formState.password" placeholder="Password">
+                    <a-input-password v-model:value="formState.password" placeholder="Password" autocomplete="current-password">
                         <template #prefix>
                             <LockOutlined class="site-form-item-icon" />
                         </template>

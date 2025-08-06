@@ -79,7 +79,7 @@
                                         }}</a-button>
                                 </a-col>
                                 <a-col :span="12">
-                                    <a-button style="width: 100%;" type="primary" html-type="submit">{{ $t('save')
+                                    <a-button style="width: 100%;" type="primary" html-type="submit" :loading="loading">{{ $t('save')
                                     }}</a-button>
                                 </a-col>
                             </a-row>
@@ -110,7 +110,7 @@ const { getAllDistrict, districts } = useDistrict()
 const optionsProvince = ref<Array<{ value: number; label: string }>>()
 const optionsDistrict = ref<Array<{ value: number; label: string }>>()
 const province = ref(0)
-const { addClinic, update } = useClinic()
+const { addClinic, update,loading } = useClinic()
 const formattedTime = computed(() => {
     if (!formState.value.time || formState.value.time.length !== 2) return ['', '']
     return formState.value.time.map(t => dayjs(t).format('HH:mm'))
