@@ -12,7 +12,7 @@ export const useEmployee = () => {
     const addEmployee = async (item: IEmployee) => {
         try {
             loading.value = true
-            await Api.post('/employees', item)
+            await Api.post('/employee', item)
             await getAllEmployee()
             message.success('add success')
         } catch (error: any) {
@@ -24,7 +24,7 @@ export const useEmployee = () => {
     }
     const updateEmployee = async (id: number, item: IEmployee) => {
         try {
-            await Api.patch(`/employees/${id}`, item)
+            await Api.patch(`/employee/${id}`, item)
             message.success('update success')
             await getAllEmployee()
         } catch (error: any) {
@@ -34,7 +34,7 @@ export const useEmployee = () => {
     const getAllEmployee = async () => {
         try {
             loading.value = true
-            const res = await Api.get('/employees', {
+            const res = await Api.get('/employee', {
                 params: query.value
             })
             employeeStore.setData(res.data)

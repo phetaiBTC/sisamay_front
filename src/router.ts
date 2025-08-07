@@ -6,6 +6,7 @@ import { authGuard } from "./guards/auth.guard";
 import Forbidden from "./views/Forbidden.vue";
 import unauthorized from "./views/Unauthorized.vue";
 import { employeeRouter } from "./modules/employee/router";
+import { RoleRouter } from "./modules/role/router";
 const routes: RouteRecordRaw[] = [
     {
         path: '/forbidden',
@@ -29,7 +30,8 @@ const routes: RouteRecordRaw[] = [
         children: [
             ...clinicRouter,
             ...userRouter,
-            ...employeeRouter
+            ...employeeRouter,
+            ...RoleRouter
         ]
     },
     ...authRouter

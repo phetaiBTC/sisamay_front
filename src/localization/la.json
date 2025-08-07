@@ -59,5 +59,8 @@
     "gender":"ເພດ",
     "male":"ຊາຍ",
     "female":"ຍິງ",
-    "branch":"ສາຂາ"
+    "branch":"ສາຂາ",
+    "role": "ບົດບາດ",
+    "permission": "ສິດທິ",
+    "display_name": "ຊື່ສະແດງ"
 }

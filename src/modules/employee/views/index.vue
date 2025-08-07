@@ -2,7 +2,8 @@
     <div>
         <base-crud title="employee" :columns="columnEmployee" :data="employees.data" :pagination="employees.pagination"
             :loading="loadingEmployee" :scroll="{ x: 2000, y: 290 }" @on-change="onChange($event)"
-            @on-edit="edit($event)" @on-add="create">
+            @on-edit="edit($event)" @on-add="create" @on-hard-delete="hardDeleteEmployee($event)"
+            @on-soft-delete="softDeleteEmployee($event)" @on-restore="restoreEmployee($event)">
             <template #default="{ column, record }">
                 <template v-if="column.key === 'gender'">
                     {{ record.gender === 'male' ? $t('male') : $t('female') }}
@@ -26,7 +27,7 @@ const open = ref(false)
 const record = ref<EmployeeEntity>()
 const mode = ref<'create' | 'edit'>('create')
 
-const { getAllEmployee, employees, loadingEmployee, setQueryEmployee } = useEmployee();
+const { getAllEmployee, employees, loadingEmployee, setQueryEmployee, hardDeleteEmployee, softDeleteEmployee, restoreEmployee } = useEmployee();
 
 const onChange = (query: IQuery) => {
     setQueryEmployee(query)

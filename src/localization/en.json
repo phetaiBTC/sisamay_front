@@ -59,5 +59,8 @@
     "gender":"Gender",
     "male":"Male",
     "female":"Female",
-    "branch":"Branch"
+    "branch":"Branch",
+    "role": "Role",
+    "permission": "Permission",
+    "display_name": "Display Name"
 }
