@@ -1,22 +1,23 @@
 <template>
     <div>
         <base-crud title="role" :columns="columnRole" :data="roles.data" :pagination="roles.pagination"
-            :loading="loadingRole" :scroll="false" @on-change="onChange($event)" @on-edit="edit($event)"
-            @on-add="create">
+            :loading="loadingRole" :scroll="{ x: '100%', y: 290 }" @on-change="onChange($event)" @on-edit="edit($event)"
+            @on-add="create" @on-hard-delete="hardDeleteRole($event)" @on-restore="restoreRole($event)"
+            @on-soft-delete="softDeleteRole($event)">
             <template #default="{ column, record }">
                 <template v-if="column.key === 'permissions'">
-                  <ContainerOutlined />  {{ record.permissions.length }}
+                    <ContainerOutlined /> {{ record.permissions.length }}
                 </template>
             </template>
         </base-crud>
-        <!-- <ModalEmployee :open="open" @update:open="open = $event" :data="record" :mode="mode"></ModalEmployee> -->
+        <ModalRole :open="open" @update:open="open = $event" :data="record" :mode="mode"></ModalRole>
 
     </div>
 </template>
 
 <script setup lang="ts">
 import BaseCrud from '@/shared/components/BaseCrud/index.vue';
-// import ModalEmployee from '../components/ModalEmployee.vue';
+import ModalRole from '../components/ModalRole.vue';
 import { useRole } from '../composables/useRole';
 import { onMounted, ref } from 'vue';
 import { columnRole } from '../interface';
@@ -27,7 +28,7 @@ const open = ref(false)
 const record = ref<RoleEntity>()
 const mode = ref<'create' | 'edit'>('create')
 
-const { getAllRole, roles, loadingRole, setQueryRole } = useRole();
+const { getAllRole, roles, loadingRole, setQueryRole, hardDeleteRole, softDeleteRole, restoreRole } = useRole();
 
 const onChange = (query: IQuery) => {
     setQueryRole(query)

@@ -26,7 +26,7 @@
                     <a-input-search v-model:value="search" :placeholder="$t('search')" enter-button
                         @search="onChange" />
                     <a-button type="primary" @click="emit('onAdd', true)">{{ $t('add') + ' ' + $t(props.title)
-                    }}</a-button>
+                        }}</a-button>
                 </div>
             </div>
         </a-col>
@@ -118,7 +118,6 @@ import { tI18n } from '@/shared/utils/i18n';
 const pageSizeOptions = ref<string[]>(['5', '10', '20', '30']);
 const onChange = () => {
     emit('onChange', {
-        // page: props.pagination.currentPage,
         page: is_active.value === 'active' ? props.pagination.currentPage : 1,
         limit: props.pagination.limit,
         search: search.value,
@@ -139,8 +138,8 @@ const props = withDefaults(defineProps<{
         currentPage: number
     }
     scroll?: {
-        x: number
-        y: number
+        x: number | string | boolean
+        y: number | string | boolean
     } | boolean
 }>(), {
     scroll: () => (false)
