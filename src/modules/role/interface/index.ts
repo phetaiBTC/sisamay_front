@@ -12,7 +12,7 @@ export const columnRole = computed<TableColumnsType>(() => [
     { title: tI18n('no'), key: 'index', fixed: 'left', width: 70 },
     { title: tI18n('name'), dataIndex: 'name', key: 'name' },
     { title: tI18n('display_name'), dataIndex: 'display_name' },
-    { title: tI18n('permission'), dataIndex: 'permissions', key: 'permissions' },
+    { title: tI18n('permission'), dataIndex: 'permissions', key: 'permissions',width: 70 },
     { title: tI18n('createdAt'), dataIndex: 'createdAt', key: 'createdAt' },
     { title: tI18n('updatedAt'), dataIndex: 'updatedAt', key: 'updatedAt' },
     { title: tI18n('deletedAt'), dataIndex: 'deletedAt', key: 'deletedAt' },

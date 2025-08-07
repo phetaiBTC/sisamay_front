@@ -2,7 +2,7 @@
     <a-modal v-model:open="modalOpen" :title="$t(props.mode) + ' ' + $t('role')" @ok="onFinish"
         @cancel="emit('update:open', false)" centered>
         <div style="height: 100%; width: 100%; padding: 2px 0;">
-            <a-form :model="formState" @finish="onFinish" layout="vertical">
+            <a-form :model="formState" @finish="onFinish" layout="vertical" :disabled="loadingRole">
                 <a-row style="height: 100%;width: 100%;" :align="'stretch'" :gutter="[16]">
                     <a-col :span="12" style="height: 100%;">
                         <BaseFormInput v-model:modelValue="formState.name" title="name" :prefix="FormOutlined"

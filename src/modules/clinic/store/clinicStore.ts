@@ -20,7 +20,8 @@ export const useClinicStore = defineStore('clinic', () => {
         limit: 10,
         search: '',
         is_active: 'active',
-        sort: 'ASC'
+        sort: 'ASC',
+        type: 'page'
     })
     const loading = ref(false)
     const setData = (item: IPagination<ClinicEntity>) => {

@@ -1,7 +1,7 @@
 <template>
     <div>
         <base-crud title="role" :columns="columnRole" :data="roles.data" :pagination="roles.pagination"
-            :loading="loadingRole" :scroll="{ x: '100%', y: 290 }" @on-change="onChange($event)" @on-edit="edit($event)"
+            :loading="loadingRole" :scroll="{ x: 1000, y: 290 }" @on-change="onChange($event)" @on-edit="edit($event)"
             @on-add="create" @on-hard-delete="hardDeleteRole($event)" @on-restore="restoreRole($event)"
             @on-soft-delete="softDeleteRole($event)">
             <template #default="{ column, record }">
