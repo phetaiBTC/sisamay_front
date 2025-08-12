@@ -7,7 +7,7 @@ import Forbidden from "./views/Forbidden.vue";
 import unauthorized from "./views/Unauthorized.vue";
 import { employeeRouter } from "./modules/employee/router";
 import { RoleRouter } from "./modules/role/router";
-import { attendanceEmployeeRouter } from "./modules/attendance/router";
+import { attendanceEmployeeRouter, attendanceRouter } from "./modules/attendance/router";
 const routes: RouteRecordRaw[] = [
     {
         path: '/forbidden',
@@ -32,7 +32,8 @@ const routes: RouteRecordRaw[] = [
             ...clinicRouter,
             ...userRouter,
             ...employeeRouter,
-            ...RoleRouter
+            ...RoleRouter,
+            ...attendanceRouter
         ]
     },
     {

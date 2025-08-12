@@ -67,5 +67,10 @@
     "field_of_study": "Field of Study",
     "current_occupation": "Current Occupation",
     "work_experience":"Work Experience",
-    "years": "years"
+    "years": "years",
+    "scan": "Scan",
+    "check_in": "Check In",
+    "check_out": "Check Out",
+    "date": "Date",
+    "attendance": "Attendance"
 }

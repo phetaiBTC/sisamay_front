@@ -21,15 +21,20 @@
                 </a-menu-item>
             </a-menu>
         </a-layout-sider>
-        <a-layout>
-            <HeaderComponent />
-
-            <a-layout-content :style="{ margin: '24px 16px 0' }">
-                <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">content</div>
-            </a-layout-content>
-            <a-layout-footer style="text-align: center">
-                Ant Design ©2018 Created by Ant UED
-            </a-layout-footer>
+        <a-layout style="min-height: 100vh">
+            <SidebarComponent />
+            <a-layout class="bgc3">
+                <HeaderComponent />
+                <a-layout-content style="margin: 0 16px;display: flex; padding: 16px 0;">
+                    <div
+                        :style="{ padding: '20px', minHeight: '90%', width: '100%', background: '#fff', borderRadius: '10px' }">
+                        <!-- <Transition> -->
+                        <router-view></router-view>
+                        <!-- </Transition> -->
+                    </div>
+                </a-layout-content>
+                <FooterComponent />
+            </a-layout>
         </a-layout>
     </a-layout>
 </template>
@@ -37,6 +42,7 @@
 import { ref } from 'vue';
 import { UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons-vue';
 import HeaderComponent from '@/shared/components/HeaderComponent.vue';
+import FooterComponent from '@/shared/components/FooterComponent.vue';
 const onCollapse = (collapsed: boolean, type: string) => {
     console.log(collapsed, type);
 };

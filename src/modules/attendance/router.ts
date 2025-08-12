@@ -7,3 +7,10 @@ export const attendanceEmployeeRouter: RouteRecordRaw[] = [
         component: Scan
     }
 ]
+export const attendanceRouter: RouteRecordRaw[] = [
+    {
+        path: '/attendance',
+        name: 'attendance',
+        component: () => import('./views/index.vue'),
+    }
+]

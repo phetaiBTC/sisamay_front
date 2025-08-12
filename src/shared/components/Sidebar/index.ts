@@ -7,7 +7,8 @@ import {
     UserAddOutlined,
     ShopOutlined,
     TeamOutlined,
-    FormOutlined
+    FormOutlined,
+    ContactsOutlined
 } from '@ant-design/icons-vue';
 interface childrenItem {
     label: string,
@@ -24,6 +25,7 @@ export const menuSidebar: MenuItem[] = [
     { label: 'user', icon: UserAddOutlined, route: 'user' },
     { label: 'employee', icon: TeamOutlined, route: 'employee' },
     { label: 'role', icon: FormOutlined, route: 'role' },
+    { label: 'attendance', icon: ContactsOutlined, route: 'attendance' },
     // { label: 'manage_users', icon: UserAddOutlined, route: 'user.index' },
     // {
     //     label: 'manage_products',
