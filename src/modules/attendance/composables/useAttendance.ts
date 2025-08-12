@@ -13,9 +13,9 @@ export const useAttendance =  () => {
     const addAttendance = async (item: IAttendance) => {
         try {
             loading.value = true
-            await Api.post('/attendance', item)
+            const res = await Api.post('/attendance', item)
             await getAllAttendance()
-            message.success('add success')
+            message.success(res.data.message)
         } catch (error: any) {
             message.error(error)
         }
