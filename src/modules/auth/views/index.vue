@@ -37,7 +37,6 @@
 <script lang="ts" setup>
 import { reactive, computed } from 'vue';
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
-import logo from '@/assets/images/pet_hug.json'
 import { MailOutlined, LockOutlined } from '@ant-design/icons-vue';
 import { useAuth } from '../composables/useAuth';
 import BaseFormInput from '@/shared/components/BaseFormInput.vue';
