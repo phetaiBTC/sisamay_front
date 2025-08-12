@@ -211,15 +211,7 @@ watch(
             }
         }
         if (open && props.mode === 'create') {
-            formState.value = {
-                name: '',
-                latitude: 17.9757,
-                longitude: 102.6331,
-                radius: 50,
-                time: [dayjs('08:00', 'HH:mm'), dayjs('17:00', 'HH:mm')],
-                late_threshold_minutes: 15,
-                district: 0
-            }
+            getLocation()
         }
     },
     { immediate: true }
