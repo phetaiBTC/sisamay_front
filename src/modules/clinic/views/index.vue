@@ -7,7 +7,7 @@
             <template #default="{ column, record }">
                 <template v-if="column.key === 'employee'">
                     <UsergroupAddOutlined style="font-size: 1.2rem;margin-right: 5px;" />
-                    {{ record.employeeCount + record.userCount }}
+                    {{ record.employeeCount  }}
                 </template>
                 <template v-if="column.key === 'address'">
                     <div style="display: flex;align-items: center;">
