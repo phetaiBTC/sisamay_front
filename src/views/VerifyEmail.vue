@@ -2,12 +2,7 @@
   <div class="container">
     <a-card class="card">
       <h1>{{ $t('verify_email') }}</h1>
-      <a-button
-        type="primary"
-        :loading="loading"
-        @click="verifyEmail"
-        class="btn-verify"
-      >
+      <a-button type="primary" :loading="loading" @click="verifyEmail" class="btn-verify">
         {{ $t('click') }}
       </a-button>
     </a-card>
@@ -33,7 +28,7 @@ const verifyEmail = async () => {
       }
     })
     message.success('Email verified successfully')
-    router.push({ name: 'Login' })
+    await router.push({ name: 'login' })
   } catch (error) {
     console.error('Error verifying email:', error)
   } finally {
