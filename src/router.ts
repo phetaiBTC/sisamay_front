@@ -8,6 +8,7 @@ import unauthorized from "./views/Unauthorized.vue";
 import { employeeRouter } from "./modules/employee/router";
 import { RoleRouter } from "./modules/role/router";
 import { attendanceEmployeeRouter, attendanceRouter } from "./modules/attendance/router";
+import VerifyEmail from "./views/VerifyEmail.vue";
 const routes: RouteRecordRaw[] = [
     {
         path: '/forbidden',
@@ -21,6 +22,14 @@ const routes: RouteRecordRaw[] = [
         path: '/unauthorized',
         name: 'unauthorized',
         component: unauthorized,
+        meta: {
+            skipAuthCheck: true
+        }
+    },
+    {
+        path: '/verify-email',
+        name: 'verify-email',
+        component: VerifyEmail,
         meta: {
             skipAuthCheck: true
         }

@@ -72,5 +72,7 @@
     "check_in": "Check In",
     "check_out": "Check Out",
     "date": "Date",
-    "attendance": "Attendance"
+    "attendance": "Attendance",
+    "verify_email": "Verify Email",
+    "click":"Click"
 }
