@@ -4,7 +4,7 @@
             style="display: flex;width: 100%; height: 100%;justify-content: space-between;align-items: center; padding: 0 20px;">
             <div class="flex items-center gap-2">
                 <span style="font-size: 1rem;">
-                    <UserOutlined style="margin-right: 10px;" /> Admin
+                    <UserOutlined style="margin-right: 10px;" /> User
                 </span>
             </div>
             <div style="display: flex;align-items: center; gap: 16px;">
