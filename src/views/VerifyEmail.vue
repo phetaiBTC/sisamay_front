@@ -16,6 +16,8 @@
 
 <script setup lang="ts">
 import { Api } from '@/plugins/axios'
+import { router } from '@/router'
+import { message } from 'ant-design-vue'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -30,7 +32,8 @@ const verifyEmail = async () => {
         token: token
       }
     })
-    console.log('Email verified successfully')
+    message.success('Email verified successfully')
+    router.push({ name: 'Login' })
   } catch (error) {
     console.error('Error verifying email:', error)
   } finally {
