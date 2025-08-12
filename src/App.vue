@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <!-- <div> -->
     <!-- <ConfigProvider> -->
       <router-view></router-view>
     <!-- </ConfigProvider> -->
-  </div>
+  <!-- </div> -->
 </template>
 
 <script setup lang="ts">

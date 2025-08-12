@@ -32,7 +32,7 @@
         </a-col>
         <a-col :span="24">
             <a-table :columns="props.columns" :data-source="props.data" :scroll="props.scroll" :pagination="false"
-                bordered class="table_a" :loading="props.loading">
+                bordered class="table_a" :loading="props.loading" :customRow="customRow">
                 <template #bodyCell="{ column, record, index }">
                     <template v-if="column.key === 'index'">
                         {{ index + 1 }}
@@ -144,7 +144,7 @@ const props = withDefaults(defineProps<{
 }>(), {
     scroll: () => (false)
 })
-const emit = defineEmits(['onAdd', 'onChange', 'onHardDelete', 'onSoftDelete', 'onRestore', 'onEdit'])
+const emit = defineEmits(['onAdd', 'onChange', 'onHardDelete', 'onSoftDelete', 'onRestore', 'onEdit', 'onRowClick']);
 const onHardDelete = (id: number) => {
     emit('onHardDelete', id)
 }
@@ -157,6 +157,13 @@ const restore = (id: number) => {
 const edit = (record: {}) => {
     emit('onEdit', record)
 }
+const customRow = (record: any) => {
+    return {
+        onClick: () => {
+            emit('onRowClick', record.id);
+        },
+    };
+};
 const showDeleteConfirm = (id: number) => {
     Modal.confirm({
         title: tI18n('Are_you_sure_delete_this_task'),

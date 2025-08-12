@@ -16,7 +16,7 @@
                         </BaseFormInput>
                     </a-col>
                     <a-col :span="24">
-                        <a-form-item :label="$t('password')" name="password" :rules="V('password', { required: true, password: true })">
+                        <a-form-item :label="$t('password')" name="password" :rules="V('password', { required: true, password: true })" v-show="props.mode == 'create'">
                             <a-input-password v-model:value="formState.password" :placeholder="$t('password')">
                                 <template #prefix>
                                     <LockOutlined class="site-form-item-icon" />

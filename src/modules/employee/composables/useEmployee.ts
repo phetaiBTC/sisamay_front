@@ -7,7 +7,7 @@ import type { IEmployee } from "../interface"
 
 export const useEmployee = () => {
     const employeeStore = useEmployeeStore()
-    const { loading, employees, query } = storeToRefs(employeeStore)
+    const { loading, employees, query, employee } = storeToRefs(employeeStore)
 
     const addEmployee = async (item: IEmployee) => {
         try {
@@ -76,8 +76,20 @@ export const useEmployee = () => {
     const setQueryEmployee = (value: IQuery) => {
         query.value = value
     }
+    const getEmployeeById = async (id: number) => {
+        try {
+            loading.value = true
+            const res = await Api.get(`/employee/${id}`)
+            employee.value = res.data
+        } catch (error: any) {
+            message.error(error)
+        } finally {
+            loading.value = false
+        }
+    }
     return {
         employees,
+        employee,
         loadingEmployee: loading,
         addEmployee,
         updateEmployee,
@@ -85,6 +97,7 @@ export const useEmployee = () => {
         hardDeleteEmployee,
         softDeleteEmployee,
         restoreEmployee,
-        setQueryEmployee
+        setQueryEmployee,
+        getEmployeeById
     }
 }   

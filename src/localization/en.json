@@ -62,5 +62,10 @@
     "branch":"Branch",
     "role": "Role",
     "permission": "Permission",
-    "display_name": "Display Name"
+    "display_name": "Display Name",
+    "education": "Education",
+    "field_of_study": "Field of Study",
+    "current_occupation": "Current Occupation",
+    "work_experience":"Work Experience",
+    "years": "years"
 }

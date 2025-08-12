@@ -62,5 +62,10 @@
     "branch":"ສາຂາ",
     "role": "ບົດບາດ",
     "permission": "ສິດທິ",
-    "display_name": "ຊື່ສະແດງ"
+    "display_name": "ຊື່ສະແດງ",
+    "education": "ການສຶກສາ",
+    "field_of_study": "ລະດັບການສຶກສາ",
+    "current_occupation": "ອາຊີບປະຈຸບັນ",
+    "work_experience":"ປະສົບການການເຮັດວຽກ",
+    "years": "ປີ"
 }

@@ -21,7 +21,7 @@
                             :rules="V('email', { required: true, email: true })">
                         </BaseFormInput>
                     </a-col>
-                    <a-col :span="12">
+                    <a-col :span="12" v-if="props.mode == 'create'">
                         <a-form-item :label="$t('password')" name="password"
                             :rules="V('password', { required: true, password: true })">
                             <a-input-password v-model:value="formState.password" :placeholder="$t('password')">
@@ -60,7 +60,7 @@
                             </a-select>
                         </a-form-item>
                     </a-col>
-                    <a-col :span="24">
+                    <a-col :span="props.mode == 'edit' ? 12 : 24">
                         <a-form-item :label="$t('birth_date')" name="birth_date"
                             :rules="V('birth_date', { required: true })">
                             <a-date-picker v-model:value="formState.birth_date" style="width: 100%;" />
@@ -203,11 +203,12 @@ watch(
                 email: props.data.email,
                 surname: props.data.surname,
                 password: '',
-                birth_date: props.data.birth_date,
+                birth_date: dayjs(props.data.birth_date),
                 gender: props.data.gender,
                 district: props.data.district_id,
                 clinic: props.data.clinic_id
             }
+            province.value = props.data.province_id
         }
         if (open && props.mode === 'create') {
             formState.value = {

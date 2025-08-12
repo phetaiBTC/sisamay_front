@@ -15,6 +15,7 @@ export const useEmployeeStore = defineStore('employee', () => {
             currentPage: 0
         }
     })
+    const employee = ref<EmployeeEntity>()
     const query = ref<IQuery>({
         page: 1,
         limit: 10,
@@ -29,6 +30,7 @@ export const useEmployeeStore = defineStore('employee', () => {
     }
     return {
         employees,
+        employee,
         loading,
         setData,
         query

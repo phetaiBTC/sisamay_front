@@ -8,6 +8,12 @@
                 <template v-if="column.key === 'gender'">
                     {{ record.gender === 'male' ? $t('male') : $t('female') }}
                 </template>
+                <template v-if="column.key === 'name'">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <span>{{ record.name }}</span>
+                        <ExportOutlined style=" cursor: pointer;font-size: 1.5rem;" @click="router.push({ name: 'employee-detail', params: { id: record.id } })" />
+                    </div>
+                </template>
             </template>
         </base-crud>
         <ModalEmployee :open="open" @update:open="open = $event" :data="record" :mode="mode"></ModalEmployee>
@@ -23,6 +29,10 @@ import { onMounted, ref } from 'vue';
 import { columnEmployee } from '../interface';
 import type { IQuery } from '@/shared/interface/query.interface';
 import type { EmployeeEntity } from '../entity';
+import { ExportOutlined } from '@ant-design/icons-vue';
+import { router } from '@/router';
+
+
 const open = ref(false)
 const record = ref<EmployeeEntity>()
 const mode = ref<'create' | 'edit'>('create')
