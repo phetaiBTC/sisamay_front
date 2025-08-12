@@ -48,8 +48,8 @@ interface FormState {
     remember: boolean;
 }
 const formState = reactive<FormState>({
-    email: 'admin@gmail.com',
-    password: 'admin@1234',
+    email: '',
+    password: '',
     remember: true,
 });
 

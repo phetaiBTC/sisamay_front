@@ -19,7 +19,7 @@
                         style="height: 100%; width: 100%; border-radius: 10px; overflow: hidden; padding: 20px; background: white;">
                         <a-form :model="formState" @finish="onFinish" layout="vertical"
                             style="display: flex;flex-direction: column;justify-content: space-between;height: 100%">
-                            <h1>{{ $t('add')+' '+$t('clinic') }}</h1>
+                            <h1>{{ $t('add') + ' ' + $t('clinic') }}</h1>
                             <a-row :gutter="16">
                                 <a-col :span="24">
                                     <BaseFormInput v-model:modelValue="formState.name" title="name"
@@ -79,8 +79,9 @@
                                         }}</a-button>
                                 </a-col>
                                 <a-col :span="12">
-                                    <a-button style="width: 100%;" type="primary" html-type="submit" :loading="loading">{{ $t('save')
-                                    }}</a-button>
+                                    <a-button style="width: 100%;" type="primary" html-type="submit"
+                                        :loading="loading">{{ $t('save')
+                                        }}</a-button>
                                 </a-col>
                             </a-row>
                         </a-form>
@@ -110,7 +111,7 @@ const { getAllDistrict, districts } = useDistrict()
 const optionsProvince = ref<Array<{ value: number; label: string }>>()
 const optionsDistrict = ref<Array<{ value: number; label: string }>>()
 const province = ref(0)
-const { addClinic, update,loading } = useClinic()
+const { addClinic, update, loading } = useClinic()
 const formattedTime = computed(() => {
     if (!formState.value.time || formState.value.time.length !== 2) return ['', '']
     return formState.value.time.map(t => dayjs(t).format('HH:mm'))
@@ -172,6 +173,26 @@ const emit = defineEmits(['update:open'])
 const handleOk = () => {
     emit('update:open', false)
 }
+
+const getLocation = async () => {
+    if (!navigator.geolocation) {
+        return
+    }
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            formState.value.latitude = position.coords.latitude
+            formState.value.longitude = position.coords.longitude
+        },
+        (_error) => {
+        },
+        {
+            enableHighAccuracy: true, // ขอความแม่นยำสูง
+            timeout: 10000, // 10 วินาที
+            maximumAge: 0   // ไม่ใช้ค่าที่ cache ไว้
+        }
+    )
+
+}
 watch(
     () => props.open,
     (open) => {
@@ -219,6 +240,7 @@ const onProvinceChange = async (value?: number) => {
 }
 onMounted(async () => {
     await getAllProvince()
+    getLocation()
     optionsProvince.value = [
         { label: tI18n("please_select") + " " + tI18n("province"), value: 0 },
         ...provinces.value.map((item) => ({
