@@ -19,9 +19,13 @@
                         <img src="/src/assets/images/vietnam.png" style="height: 1rem;margin-top: -4px !important;">
                     </a-select-option>
                 </a-select>
-                <a-button type="primary" @click="logout()" :loading="loading">
-                    <LogoutOutlined/>{{ $t('logout') }}
-                </a-button>
+                <a-popconfirm title="Are you sure you want to logout" :ok-text="$t('yes')" :cancel-text="$t('no')"
+                    @confirm="logout()">
+                    <a-button type="primary" :loading="loading">
+                        <LogoutOutlined />{{ $t('logout') }}
+                    </a-button>
+                </a-popconfirm>
+
             </div>
         </div>
     </a-layout-header>
